@@ -1,6 +1,6 @@
 # implementation-plan.md — GreenShift Phased Roadmap
 
-*What to build, and in what order. How to work is in `build-rule.md`; what is actually done is in `build-progress.md`. Derived contracts for the PRD's missing §10–20 are in `prd-addendum.md` (cited as **ADD §n**).*
+*What to build, and in what order. How to work is in `build-rule.md`; what is actually done is in `build-progress.md`. Full 20-section specification is codified in `docs/PRD.md` (and mirrored in the root PRD), with architectural derivations in `prd-addendum.md`.*
 
 **Reading this file:** do not load all of it. Read this header, then only your phase: `sed -n '/^## Phase 5 /,/^## Phase 6 /p' implementation-plan.md`.
 
@@ -8,7 +8,7 @@
 
 - **Global Definition of Done (GDoD):** all phase acceptance criteria pass with evidence; `make check` is green (ruff, mypy, pytest, eslint, vitest, build); no regression in earlier phases; new code has tests; no TODO stubs standing in for required behavior; `build-progress.md` updated; handoff report written; git tag `phase-N-verified` created.
 - **Gate to the next phase (generic):** this phase is `VERIFIED` in `build-progress.md`, its tag exists, and `make check` passes on HEAD. Each phase lists extra gate conditions only when they differ.
-- **PRD refs** name the only PRD parts to read for that phase (`F3` = feature spec F3, `§8.3` = section, `FR`/`NFR` = tables in §7).
+- **PRD refs** name the only PRD parts to read for that phase (`F3` = feature spec F3, `§8.3` = section, `FR`/`NFR` = tables in §7, `§10`–`§20` = core contracts).
 
 ## Target repository layout
 
@@ -49,12 +49,12 @@ demo/echo_target.py   .github/workflows/ci.yml
 ## Phase 0 — Repository, tooling and spec lock
 
 **Objective.** A clean, runnable monorepo skeleton with every quality tool wired, and confirmation that the governing documents are present.
-**PRD refs.** Header, §8.3 (module map), §9, NFR-10, NFR-11.
+**PRD refs.** Header, §8.3 (module map), §9, §11, §12, NFR-10, NFR-11.
 **Requirements covered.** NFR-10 (portability setup), NFR-11 (tooling), FR-22 (`/healthz` stub).
-**Prerequisites.** `docs/PRD.md` and the four governing files exist at the paths above; Python 3.12 and Node 20 installed (record versions; missing = blocker).
+**Prerequisites.** `docs/PRD.md` (v1.1 complete) and governing files exist; Python 3.12 and Node 20 installed.
 **Files.** `backend/pyproject.toml`, `backend/app/**/__init__.py` (packages per §8.3), `backend/app/main.py`, `backend/tests/unit/test_health.py`; `frontend/` Vite React-TS scaffold; `Makefile`, `.env.example`, `.gitignore`, `.github/workflows/ci.yml`.
 **Tasks.**
-1. Verify governing files exist; confirm `docs/PRD.md` ends at §9 and log that `prd-addendum.md` is in force (open issue I-1 stays until the team confirms).
+1. Verify governing files exist (`docs/PRD.md`, `prd-addendum.md`, `build-rule.md`, `implementation-plan.md`, `build-progress.md`, `AGENTS.md`); confirm PRD v1.1 is complete across all 20 sections.
 2. `git init` (if needed), `.gitignore` (venv, node_modules, `*.db`, `.env`), first commit.
 3. Backend: `pyproject.toml` with §9 dependencies and ADD §9 additions; package skeleton; `GET /healthz` → `{"status":"ok"}`.
 4. Configure ruff, mypy (strict for `app/scheduling` and `app/carbon`, standard elsewhere), pytest (`asyncio_mode=auto`, coverage).

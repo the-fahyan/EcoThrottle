@@ -20,7 +20,7 @@
 - No paid services. Must run offline in demo mode.
 - All times UTC internally; same inputs give identical plans.
 
-**Governing documents:** `docs/PRD.md` (read only the parts a phase lists), `prd-addendum.md` (derived contracts because the PRD file ends after §9), `implementation-plan.md`, `build-progress.md`. Do not copy PRD text into code comments or reports; cite section IDs instead.
+**Governing documents:** `docs/PRD.md` (authoritative 20-section build contract; also mirrored at `GreenShift PRD AI-Driven Smart Energy Load Optimizer.md`), `prd-addendum.md` (architectural derivation & ADR log), `implementation-plan.md`, `build-progress.md`, and `AGENTS.md`. Do not copy PRD text into code comments or reports; cite section IDs instead.
 
 ---
 
