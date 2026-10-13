@@ -44,7 +44,7 @@ Latest Verified Phase Tag: None (Pre-implementation)
 | Task ID | Task Description | Status | Evidence / Commit |
 |---|---|---|---|
 | P0.T1 | Verify governing files exist (`docs/PRD.md`, `prd-addendum.md`, `build-rule.md`, `implementation-plan.md`, `build-progress.md`, `AGENTS.md`) and validate PRD v1.1 completeness. | `VERIFIED` | PRD v1.1 ratified across all 20 sections; all governing docs validated. |
-| P0.T2 | Setup `.gitignore` (venv, node_modules, `*.db`, `.env`). | `NOT_STARTED` | — |
+| P0.T2 | Setup `.gitignore` (venv, node_modules, `*.db`, `.env`). | `VERIFIED` | `.gitignore` committed; `.env` and `*.db` verified ignored. |
 | P0.T3 | Backend: `pyproject.toml` with dependencies; package skeleton; `GET /healthz` stub. | `NOT_STARTED` | — |
 | P0.T4 | Configure ruff, mypy, pytest with coverage. | `NOT_STARTED` | — |
 | P0.T5 | Frontend: Vite + React 18 + TS, Tailwind CSS, React Router, TanStack Query, Vitest, ESLint. | `NOT_STARTED` | — |

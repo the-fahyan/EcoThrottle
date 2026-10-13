@@ -1,0 +1,57 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python packaging & builds
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Testing and coverage caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# Node & Frontend
+node_modules/
+frontend/dist/
+frontend/coverage/
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Database and state files
+*.db
+*.db-shm
+*.db-wal
+/data/
+data/
+
+# Playwright & E2E reports
+test-results/
+playwright-report/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
