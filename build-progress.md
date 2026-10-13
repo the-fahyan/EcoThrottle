@@ -13,7 +13,7 @@ Latest Verified Phase Tag: None (Pre-implementation)
 
 | Phase | Title | Status | Verified Git Tag | Notes / Blocker |
 |---|---|---|---|---|
-| 0 | Repository, tooling, spec lock | `NOT_STARTED` | — | Prerequisites: Python 3.12, Node 20 |
+| 0 | Repository, tooling, spec lock | `VERIFIED` | `phase-0-verified` | Python 3.12.14, Node 24.21.0, uv 0.12.5 |
 | 1 | Core infrastructure | `NOT_STARTED` | — | Config, Clock, logging, errors |
 | 2 | Database and state machine | `NOT_STARTED` | — | SQLAlchemy 2, SQLite WAL, Alembic |
 | 3 | Authentication and rate limiting | `NOT_STARTED` | — | JWT, API keys, Argon2, slowapi |
@@ -37,7 +37,7 @@ Latest Verified Phase Tag: None (Pre-implementation)
 ## 2. Current Phase Details
 
 ### Phase 0 — Repository, tooling and spec lock
-- **Status:** `NOT_STARTED`
+- **Status:** `VERIFIED`
 - **Prerequisites:** Python 3.12, Node 20, Git. All 5 governing documents present and verified.
 
 ### Current Phase Tasks
@@ -47,17 +47,24 @@ Latest Verified Phase Tag: None (Pre-implementation)
 | P0.T2 | Setup `.gitignore` (venv, node_modules, `*.db`, `.env`). | `VERIFIED` | `.gitignore` committed; `.env` and `*.db` verified ignored. |
 | P0.T3 | Backend: `pyproject.toml` with dependencies; package skeleton; `GET /healthz` stub. | `VERIFIED` | FastAPI app with `/healthz` returning `{"status":"ok"}`; test passes. |
 | P0.T4 | Configure ruff, mypy, pytest with coverage. | `VERIFIED` | ruff check/format clean; mypy strict overrides clean; pytest with coverage 100%. |
-| P0.T5 | Frontend: Vite + React 18 + TS, Tailwind CSS, React Router, TanStack Query, Vitest, ESLint. | `NOT_STARTED` | — |
-| P0.T6 | Makefile targets (`install`, `check`, `backend-dev`, `frontend-dev`, etc.). | `NOT_STARTED` | — |
-| P0.T7 | `.env.example` listing all ADD §8 / PRD §17 variables with safe defaults. | `NOT_STARTED` | — |
-| P0.T8 | CI workflow (`.github/workflows/ci.yml`) running `make check`. | `NOT_STARTED` | — |
+| P0.T5 | Frontend: Vite + React 18 + TS, Tailwind CSS, React Router, TanStack Query, Vitest, ESLint. | `VERIFIED` | Scaffolding complete; Vitest smoke test passed; ESLint clean; Vite build succeeded. |
+| P0.T6 | Makefile targets (`install`, `check`, `backend-dev`, `frontend-dev`, etc.). | `VERIFIED` | Root `Makefile` and `make.bat` wrapper wired; `make check` passes clean. |
+| P0.T7 | `.env.example` listing all ADD §8 / PRD §17 variables with safe defaults. | `VERIFIED` | `.env.example` verified with safe defaults and all config keys. |
+| P0.T8 | CI workflow (`.github/workflows/ci.yml`) running `make check`. | `VERIFIED` | GitHub Actions workflow created running on ubuntu-latest with `make check`. |
 
 ---
 
 ## 3. Verified Milestones & Test Status
 
-- **Latest `make check` status:** Not run yet (Skeleton to be created in Phase 0).
-- **Test Coverage:** N/A (Pre-implementation).
+- **Toolchain Versions (AC-0.5):**
+  - Python: `3.12.14`
+  - Node: `v24.21.0`
+  - npm: `11.19.0`
+  - uv: `0.12.5`
+  - Git: `2.56.0.windows.2`
+- **Latest `make check` status:** PASS (All backend and frontend checks passed cleanly).
+- **Backend Test Coverage:** 100% (7/7 statements covered in `app/`).
+- **Frontend Tests:** 1 passed (100% test pass rate in Vitest).
 
 ---
 
@@ -92,6 +99,24 @@ Latest Verified Phase Tag: None (Pre-implementation)
 
 ## 6. Next Action
 
-- **Target Phase:** Phase 0 — Repository, tooling and spec lock.
-- **Immediate Task:** P0.T2 — Setup `.gitignore`, verify Python 3.12 & Node 20 environments, and scaffold backend `pyproject.toml`.
-- **Command to Start:** `Start Phase 0`
+- **Target Phase:** Phase 1 — Core infrastructure: config, clock, logging, errors
+- **Immediate Task:** P1.T1 — `Settings` via pydantic-settings; fail fast on invalid demo/auth settings.
+- **Command to Start:** `Start Phase 1`
+
+---
+
+## 7. Phase Log
+
+```
+Phase: 0 — Repository, tooling and spec lock   Status: VERIFIED
+Requirements implemented: NFR-10, NFR-11, FR-22 (stub)
+Files created/modified: backend/, frontend/, Makefile, make.bat, .env.example, .gitignore, .github/workflows/ci.yml
+Tests/validation run: make check (backend-lint, backend-test, frontend-lint, frontend-test, frontend-build)
+Results: Backend: 1 passed (100% coverage); Frontend: 1 passed; Build: clean (3.00s); Lint: 0 errors
+Acceptance criteria: AC-0.1 ✔ make check passes clean; AC-0.2 ✔ /healthz test passes; AC-0.3 ✔ frontend build succeeds; AC-0.4 ✔ no secret/.db tracked; AC-0.5 ✔ toolchain versions recorded
+Known failures / unresolved issues: None
+Decisions future phases must keep: None
+Current project status: Phase 0 verified and tagged. Clean monorepo foundation with wired quality gates.
+Next phase: Phase 1 — Core infrastructure: config, clock, logging, errors
+Resume instructions: Start Phase 1
+```
