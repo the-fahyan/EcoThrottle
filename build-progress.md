@@ -45,8 +45,8 @@ Latest Verified Phase Tag: None (Pre-implementation)
 |---|---|---|---|
 | P0.T1 | Verify governing files exist (`docs/PRD.md`, `prd-addendum.md`, `build-rule.md`, `implementation-plan.md`, `build-progress.md`, `AGENTS.md`) and validate PRD v1.1 completeness. | `VERIFIED` | PRD v1.1 ratified across all 20 sections; all governing docs validated. |
 | P0.T2 | Setup `.gitignore` (venv, node_modules, `*.db`, `.env`). | `VERIFIED` | `.gitignore` committed; `.env` and `*.db` verified ignored. |
-| P0.T3 | Backend: `pyproject.toml` with dependencies; package skeleton; `GET /healthz` stub. | `NOT_STARTED` | — |
-| P0.T4 | Configure ruff, mypy, pytest with coverage. | `NOT_STARTED` | — |
+| P0.T3 | Backend: `pyproject.toml` with dependencies; package skeleton; `GET /healthz` stub. | `VERIFIED` | FastAPI app with `/healthz` returning `{"status":"ok"}`; test passes. |
+| P0.T4 | Configure ruff, mypy, pytest with coverage. | `VERIFIED` | ruff check/format clean; mypy strict overrides clean; pytest with coverage 100%. |
 | P0.T5 | Frontend: Vite + React 18 + TS, Tailwind CSS, React Router, TanStack Query, Vitest, ESLint. | `NOT_STARTED` | — |
 | P0.T6 | Makefile targets (`install`, `check`, `backend-dev`, `frontend-dev`, etc.). | `NOT_STARTED` | — |
 | P0.T7 | `.env.example` listing all ADD §8 / PRD §17 variables with safe defaults. | `NOT_STARTED` | — |
